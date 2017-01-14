@@ -1,0 +1,84 @@
+{
+  "total" : 0,
+  "customers": [
+    {
+      "need": 150
+    },
+    {
+      "need": 130
+    },
+    {
+      "need": 150
+    },
+    {
+      "need": 140
+    }
+  ],
+  "transfers": [
+    [
+      {
+        "cost": 7,
+        "amount": 0
+      },
+      {
+        "cost": 8,
+        "amount": 0
+      },
+      {
+        "cost": 1,
+        "amount": 0
+      },
+      {
+        "cost": 2,
+        "amount": 0
+      }
+    ],
+    [
+      {
+        "cost": 4,
+        "amount": 0
+      },
+      {
+        "cost": 5,
+        "amount": 0
+      },
+      {
+        "cost": 9,
+        "amount": 0
+      },
+      {
+        "cost": 8,
+        "amount": 0
+      }
+    ],
+    [
+      {
+        "cost": 9,
+        "amount": 0
+      },
+      {
+        "cost": 2,
+        "amount": 0
+      },
+      {
+        "cost": 3,
+        "amount": 0
+      },
+      {
+        "cost": 6,
+        "amount": 0
+      }
+    ]
+  ],
+  "suppliers": [
+    {
+      "stock": 200
+    },
+    {
+      "stock": 180
+    },
+    {
+      "stock": 190
+    }
+  ]
+}

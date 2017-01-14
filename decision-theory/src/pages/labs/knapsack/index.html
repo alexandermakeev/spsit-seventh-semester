@@ -1,0 +1,48 @@
+<h3 class="text-center">Knapsack problem</h3>
+<form name="knapsackCtrl.form">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="form-group" ng-class="{'has-error' : knapsackCtrl.form.totalWeight.$touched
+            && knapsackCtrl.form.totalWeight.$invalid}">
+                <label for="totalWeight" class="control-label">Total weight</label>
+                <input type="number" name="totalWeight" class="form-control" placeholder="Total weight" min="1"
+                       ng-model="knapsackCtrl.total" ng-change="knapsackCtrl.updateResult()" required autofocus>
+                <span class="help-block" ng-show="knapsackCtrl.form.totalWeight.$touched
+            && knapsackCtrl.form.totalWeight.$invalid">The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-3 col-xs-offset-3">
+            <h4>Greedy algorithm</h4>
+            <p>Weight: <b>{{knapsackCtrl.result.greedy.weight}}</b></p>
+            <p>Cost: <b>{{knapsackCtrl.result.greedy.cost}}</b></p>
+        </div>
+        <div class="col-xs-3">
+            <h4>Dynamic programming</h4>
+            <p>Weight: <b>{{knapsackCtrl.result.dynamic.weight}}</b></p>
+            <p>Cost: <b>{{knapsackCtrl.result.dynamic.cost}}</b></p>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-xs-6">
+        <h4>Knapsack content
+            <button class="pull-right btn btn-primary btn-sm" ng-click="knapsackCtrl.addItem()">Add item</button>
+        </h4>
+        <table class="table table-hover table-striped table-condensed table-responsive">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Weight</th>
+                <th>Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(index, item) in knapsackCtrl.items track by index">
+                <td class="col-xs-3" ng-bind="index+1"></td>
+                <td class="col-xs-3" ng-bind="item.weight"></td>
+                <td class="col-xs-3" ng-bind="item.cost"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<form name="rockPaperScissorsCtrl.form">
+    <h3 class="text-center">Rock-paper-scissors</h3>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="form-group"
+                 ng-class="{'has-error' : rockPaperScissorsCtrl.form.count.$touched && rockPaperScissorsCtrl.form.count.$invalid }">
+                <label for="count" class="control-label">Games count</label>
+                <input id="count" name="count" type="number" min="1" class="form-control" placeholder="Games count"
+                       ng-model="rockPaperScissorsCtrl.count" required>
+            </div>
+        </div>
+    </div>
+    <div>1st won: <b ng-bind="rockPaperScissorsCtrl.total.first"></b></div>
+    <div>2nd won: <b ng-bind="rockPaperScissorsCtrl.total.second"></b></div>
+    <div>Tie: <b ng-bind="rockPaperScissorsCtrl.total.tie"></b></div>
+    <table class="table table-condensed table-striped table-hover">
+        <thead>
+        <tr>
+            <td>№</td>
+            <td>Player 1</td>
+            <td>Player 2</td>
+            <td>Result</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(index, result) in rockPaperScissorsCtrl.results track by index">
+            <td class="col-xs-1" ng-bind="index+1"></td>
+            <td class="col-xs-3" ng-bind="result.first"></td>
+            <td class="col-xs-3" ng-bind="result.second"></td>
+            <td class="col-xs-5" ng-bind="result.msg"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>

@@ -1,0 +1,56 @@
+@import "../../bower_components/bootstrap/less/bootstrap";
+@import "../../bower_components/components-font-awesome/less/font-awesome";
+@import "../../node_modules/n3-charts/build/LineChart.css";
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.table {
+  > tbody {
+    > tr {
+      > td {
+        border: 0;
+      }
+    }
+  }
+}
+
+.chart {
+  height: 500px;
+}
+
+.transport-task {
+  button {
+    margin-top: 25px;
+  }
+
+  .tapped {
+    background-color: #ff874b;
+  }
+}
+
+.side-menu {
+  @side_menu_background: #3f3f3f;
+  height: 100%;
+  position: fixed;
+  background-color: @side_menu_background;
+  width: 250px;
+  transition: .5s;
+
+  @item_color: #afafaf;
+
+  > a {
+    padding: 15px 8px 0 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: block;
+    color: @item_color;
+    &:hover, &:active {
+      color: lighten(@item_color, 20%);
+    }
+  }
+}

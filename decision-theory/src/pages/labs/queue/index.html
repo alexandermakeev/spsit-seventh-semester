@@ -1,0 +1,79 @@
+<h3 class="text-center">Queueing model</h3>
+<form name="queueCtrl.form">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : queueCtrl.form.timestamp.$invalid && queueCtrl.form.timestamp.$touched }">
+                <label class="control-label">Timestamp</label>
+                <p class="input-group">
+                    <input type="text" name="timestamp" class="form-control" datetime-picker="dd MMM yyyy HH:mm"
+                           ng-model="queueCtrl.timestamp" is-open="timestamp" ng-change="queueCtrl.generateClients()"
+                           required>
+                    <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="timestamp = !timestamp">
+                <i class="fa fa-calendar"></i>
+            </button>
+        </span>
+                </p>
+                <span class="help-block" ng-show="queueCtrl.form.timestamp.$invalid && queueCtrl.form.timestamp.$touched">
+                The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : queueCtrl.form.clientsPerHour.$invalid && queueCtrl.form.clientsPerHour.$touched }">
+                <label for="clientsPerHour" class="control-label">Clients p/h</label>
+                <input type="number" name="clientsPerHour" class="form-control" min="1" placeholder="Clients"
+                       ng-model="queueCtrl.clientsPerHour" ng-change="queueCtrl.generateClients()"
+                       ng-init="queueCtrl.generateClients()" required>
+                <span class="help-block"
+                      ng-show="queueCtrl.form.clientsPerHour.$invalid && queueCtrl.form.clientsPerHour.$touched">
+                The field cannot be blank</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : queueCtrl.form.operationsMin.$invalid && queueCtrl.form.operationsMin.$touched }">
+                <label for="operationsMin" class="control-label">Min operations (min)</label>
+                <input type="number" name="operationsMin" class="form-control" min="1" placeholder="Min operations (min)"
+                       ng-model="queueCtrl.operationsMin" ng-change="queueCtrl.generateClients()"
+                       ng-init="queueCtrl.generateClients()" min="0" max="{{queueCtrl.operationsMax}}" required>
+                <span class="help-block"
+                      ng-show="queueCtrl.form.operationsMin.$invalid && queueCtrl.form.operationsMin.$touched">
+                The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : queueCtrl.form.operationsMax.$invalid && queueCtrl.form.operationsMax.$touched }">
+                <label for="operationsMax" class="control-label">Max operations (min)</label>
+                <input type="number" name="operationsMax" class="form-control" min="1" placeholder="Max operations (min)"
+                       ng-model="queueCtrl.operationsMax" ng-change="queueCtrl.generateClients()"
+                       ng-init="queueCtrl.generateClients()" min="{{queueCtrl.operationsMin}}" required>
+                <span class="help-block"
+                      ng-show="queueCtrl.form.operationsMax.$invalid && queueCtrl.form.operationsMax.$touched">
+                The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : queueCtrl.form.hoursAmount.$invalid && queueCtrl.form.hoursAmount.$touched }">
+                <label for="hours" class="control-label">Amount of hours</label>
+                <input type="number" name="hoursAmount" class="form-control" min="1" placeholder="Amount of hours"
+                       ng-model="queueCtrl.hoursAmount" ng-change="queueCtrl.generateClients()"
+                       ng-init="queueCtrl.generateClients()" required>
+                <span class="help-block"
+                      ng-show="queueCtrl.form.hoursAmount.$invalid && queueCtrl.form.hoursAmount.$touched">
+                The field cannot be blank</span>
+            </div>
+        </div>
+    </div>
+</form>
+<h5>Max queue length: <b ng-bind="queueCtrl.maxLength"></b></h5>
+<h5>Average queue length: <b ng-bind="queueCtrl.avgLength | number:1"></b></h5>
+<h5>Max waiting time (min): <b ng-bind="queueCtrl.maxWaiting"></b></h5>
+<div class="chart">
+    <linechart data="queueCtrl.plotData" options="queueCtrl.options"></linechart>
+</div>

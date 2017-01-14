@@ -1,0 +1,87 @@
+<h3 class="text-center">Transport task</h3>
+<form name="transportTaskCtrl.form" class="transport-task">
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="form-group" ng-class="{'has-error' : transportTaskCtrl.form.suppliers.$invalid
+            && transportTaskCtrl.form.suppliers.$touched}">
+                <label for="suppliers" class="control-label">Suppliers</label>
+                <input id="suppliers" name="suppliers" type="number" min="1" max="10" class="form-control"
+                       placeholder="Suppliers"
+                       ng-model="transportTaskCtrl.params.suppliers"
+                       ng-change="transportTaskCtrl.resize()" autofocus required>
+                <span class="help-block"
+                      ng-show="transportTaskCtrl.form.suppliers.$invalid && transportTaskCtrl.form.suppliers.$touched">
+                    The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="form-group" ng-class="{'has-error' : transportTaskCtrl.form.customers.$invalid
+            && transportTaskCtrl.form.customers.$touched}">
+                <label for="customers" class="control-label">Customers</label>
+                <input id="customers" name="customers" type="number" min="1" max="10" class="form-control" placeholder="Customers"
+                       ng-model="transportTaskCtrl.params.customers"
+                       ng-change="transportTaskCtrl.resize()" required>
+                <span class="help-block"
+                      ng-show="transportTaskCtrl.form.customers.$invalid && transportTaskCtrl.form.customers.$touched">
+                    The field cannot be blank</span>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-default btn-md btn-block" ng-click="transportTaskCtrl.setDefault()">Set default
+            </button>
+        </div>
+    </div>
+    <table class="table table-responsive table-condensed">
+        <tr>
+            <td></td> <!--empty-->
+            <td ng-repeat="customer in transportTaskCtrl.data.customers">
+                <input type="number" class="form-control" ng-model="customer.need"
+                       ng-change="transportTaskCtrl.onChange()">
+            </td>
+        </tr>
+        <tr ng-repeat="(index, supplier) in transportTaskCtrl.data.suppliers">
+            <td>
+                <input type="number" class="form-control" ng-model="supplier.stock"
+                       ng-change="transportTaskCtrl.onChange()">
+            </td>
+            <td ng-repeat="transfer in transportTaskCtrl.data.transfers[index]">
+                <input type="number" class="form-control" ng-model="transfer.cost"
+                       ng-change="transportTaskCtrl.onChange()">
+            </td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-xs-6">
+            <h4>North-west corner</h4>
+            <p>Delivery total: <b ng-bind="transportTaskCtrl.nwCorner.total"></b></p>
+            <table class="table table-responsive table-condensed table-hover">
+                <tr>
+                    <td></td>
+                    <td ng-repeat="customer in transportTaskCtrl.data.customers" ng-bind="customer.need"></td>
+                </tr>
+                <tr ng-repeat="(index, supplier) in transportTaskCtrl.data.suppliers">
+                    <td ng-bind="supplier.stock"></td>
+                    <td ng-repeat="transfer in transportTaskCtrl.nwCorner.transfers[index]"
+                        ng-bind="transfer.amount != 0 ? transfer.amount : ''"
+                        ng-class="{'tapped' : transfer.amount != 0}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-xs-6">
+            <h4>Smallest element</h4>
+            <p>Delivery total: <b ng-bind="transportTaskCtrl.sElement.total"></b></p>
+            <table class="table table-responsive table-condensed table-hover">
+                <tr>
+                    <td></td>
+                    <td ng-repeat="customer in transportTaskCtrl.data.customers" ng-bind="customer.need"></td>
+                </tr>
+                <tr ng-repeat="(index, supplier) in transportTaskCtrl.data.suppliers">
+                    <td ng-bind="supplier.stock"></td>
+                    <td ng-repeat="transfer in transportTaskCtrl.sElement.transfers[index]"
+                        ng-bind="transfer.amount != -1 ? transfer.amount : ''"
+                        ng-class="{'tapped' : transfer.amount != -1}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

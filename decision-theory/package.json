@@ -1,0 +1,15 @@
+{
+  "name": "decision-theory",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "gulp-watch": "^4.3.9"
+  },
+  "dependencies": {
+    "n3-charts": "^2.0.28"
+  }
+}
