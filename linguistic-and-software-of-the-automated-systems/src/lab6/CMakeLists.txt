@@ -1,0 +1,2 @@
+set(SOURCE_FILES main.cpp Tokenizer.cpp Tokenizer.h TokenType.h TokenizeState.h Token.cpp Token.h Parser.cpp Parser.h Value.cpp Value.h Expression.cpp Expression.h PrintStatement.cpp PrintStatement.h Statement.cpp Statement.h InputStatement.cpp InputStatement.h NumberValue.cpp NumberValue.h StringValue.cpp StringValue.h AssignStatement.cpp AssignStatement.h GotoStatement.cpp GotoStatement.h IfThenStatement.cpp IfThenStatement.h VariableExpression.cpp VariableExpression.h OperatorExpression.cpp OperatorExpression.h Common.h)
+add_executable(lab6 ${SOURCE_FILES})

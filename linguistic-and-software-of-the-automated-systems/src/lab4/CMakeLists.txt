@@ -1,0 +1,2 @@
+set(SOURCE_FILES main.cpp Point.cpp Point.h Util.cpp Util.h File.cpp File.h ArrayList.cpp ArrayList.h Console.cpp Console.h Shape.cpp Shape.h DirectPolygon.h DirectPolygon.cpp stl/StlShape.cpp stl/StlShape.h stl/StlDirectPolygon.cpp stl/StlDirectPolygon.h stl/StlConsole.cpp stl/StlConsole.h stl/StlFile.cpp stl/StlFile.h stl/StlUtil.cpp stl/StlUtil.h)
+add_executable(lab4 ${SOURCE_FILES})

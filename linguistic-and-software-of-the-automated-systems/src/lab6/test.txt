@@ -1,0 +1,18 @@
+endless:
+
+    in:
+        print "Input a positive number"
+        input i
+        if i < 1 then in
+        count = 0
+
+    loop:
+
+        if count = i then end
+        print "Hello World"
+        count = count + 1
+        goto loop
+
+    end:3
+        print ""
+        goto endless
